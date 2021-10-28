@@ -21,7 +21,7 @@ public class Word {
 
 
 
-    public  boolean Step(User p)
+    public  User Step(User p)
     {
         User u = new User(p);
         list.remove(p);
@@ -62,15 +62,16 @@ public class Word {
             Top(p);
         }
 
-        var isEn = EnemyCheck(p);
-        if(!isEn)
+        var isEn = EnemyCheckObj(p);
+        if(isEn == null)
        list.add(p);
         else
             list.add(u);
         return  isEn;
     }
 
-    public boolean EnemyCheck(Position p)
+
+    public User EnemyCheckObj(Position p)
     {
         boolean res = false;
 
@@ -78,10 +79,10 @@ public class Word {
         {
             var u = list.get(i);
             if(u.X == p.X && u.Y == u.Y)
-                return true;
+                return u;
         }
 
-        return res;
+        return null;
     }
 
 
